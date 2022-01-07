@@ -1,89 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="dark">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petz Community Webring</title>
 <link rel="icon" 
       type="image/png" 
-      href="./favicon.png">    
-<style>
-.content {
-  max-width: 500px;
-  margin: auto;
-}
-.instructions {
-  max-width:400px;
-  margin: auto;
-}
-.center,h1 {
-  text-align: center;
-  color:white;
-}
-ul {
-  display: table;
-  margin: 0 auto;
-}
-body { 
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-color: black;
-  background-size: cover;
-  color: #e0e0e0;
-  font-family: Arial;
-}
-a:link {
-  color:#f8f8f8;
-  text-decoration: none;
-}
-a:visited {
-  color: #bfc8cf;
-  text-decoration: none;
-}
-a:hover {
-  color: white;
-  text-decoration: underline;
-  text-decoration-color: white;
-}
-a:active {
-  color: tan;
-}
-input {
-  background-color: darkgrey;
-}
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-html {
-    display: table;
-
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-color: black;
-  background-size: cover;    
-}
-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-</style>
+      href="./favicon.png">
+<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 </head>
   <body>
-
-  <div  id="body">
-    <div class="content">
+<main class="container">
+  <div id="body">
       <h1>Petz Community Webring</h1>
-      <div id="links">Javascript must be enabled!
+      <section>
+        <h3>What is this?</h3>
+        <p>The Petz Community Webring links together a group of sites for the P.F. Magic Petz games.</p>
+        <p>These can be crew sites, hex archives, modding sites or more as long as they have Petz-related content! You can apply to join the webring below.</p>
+      </section>
+      <section>
+        <h3>Webring sites</h3>
+      <div id="links"><p>Javascript must be enabled!</p>
       </div>
-      <br>
-      <div class ="center"><div id ="instructions"><input type="button" value="+ Add Your Site +" onclick="showcode()"></div>
-  </div> 
+      <br/>
+      <div id="instructions"><button onclick="showcode()">Add your site</button></div>
+    </section>
 </div>
-
+</main>
 <script language = "javascript"> 
   var sites = [
   ["The Rat Shack","ratshack","https://ratshack.neocities.org"]
@@ -124,19 +67,18 @@ if (direction == "next" || direction == "prev"){
 var linksdiv = document.getElementById("links");
 linksdiv.innerHTML ="";
 var list = document.createElement('div');
-list.style.textAlign = "center";
 
 for (var i=0; i<sites.length; i++){
   var item = document.createElement('div');
-  item.style.padding = "5px";
   
   var a = document.createElement('a');
   var linkText = document.createTextNode(sites[i][0]);
   a.appendChild(linkText);
+  a.style = 'padding-right: 50px;'
   a.href = sites[i][2]; 
   item.appendChild(a);  
   item.id = sites[i][1];
-  
+
   list.appendChild(item);
 }
 linksdiv.appendChild(list);     
@@ -159,7 +101,8 @@ for (var i=0; i<sites.length; i++){
   var inputs = document.getElementsByTagName('input');
   for (var i=0; i<inputs.length; i++){
     inputs[i].style.visibility = "visible";
-    inputs[i].size = 20;   
+    inputs[i].size = 20;
+    inputs[i].style = 'width:auto';
   }
 }     
   </script>
