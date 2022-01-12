@@ -8,6 +8,11 @@
       type="image/png" 
       href="./favicon.png">
 <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+<style>
+  td {
+    border-bottom:  0px;
+  }
+</style>
 </head>
   <body>
 <main class="container">
@@ -24,6 +29,10 @@
       </div>
       <br/>
       <div id="instructions"><button onclick="showcode()">Add your site</button></div>
+      <table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="#ratshack|prev" onclick="location.hash = 'ratshack|prev'; location.reload()">Prev<br>&lt;&lt;</a></td><td><a href="#"><img src="./banner.gif"></a></td><td><a href="#ratshack|next" onclick="location.hash = 'ratshack|next'; location.reload()">Next<br>&gt;&gt;</a></td></tr></table>
+    </section>
+    <section>
+      <small>Banners by <a href="https://crushing.neocities.org/petz/index.html">CRUSH</a></small>
     </section>
 </div>
 </main>
@@ -36,33 +45,22 @@ var url = window.location.href;
 var sitecode = url.replace(/.*\#/, '');
 var direction = sitecode.replace (/.*\|/,'');
 var sitecode = sitecode.replace (/\|.*/,'');
+var newurl;
 
 if (direction == "next" || direction == "prev"){
-  var newurl;
-    for (var i=0; i<sites.length; i++){
-       if (sites[i][1] == sitecode){
-          if (direction =="next"){
-            for (var j=1; j<sites.length; j++){
-              newurl = (i+j)%(sites.length);
-              window.location.href = sites[newurl][2];
-              break;
-            }
-          }
-       }
-       if (sites[i][1] == sitecode){
-          if (direction == "prev"){
-            for (var j=1; j<sites.length; j++){
-              newurl = (i+sites.length-j)%(sites.length);
-              if (sites[newurl][3]==1){
-                window.location.href = sites[newurl][2];
-                break;
-              }
-            }
-          }
-       }      
-      
-    }
-
+  for (var i=0; i<sites.length; i++){
+     if (sites[i][1] == sitecode){
+        if (direction =="next"){
+          newurl = (i+1)%(sites.length);
+          window.location.replace(sites[newurl][2])
+          break;
+        } else {
+          newurl = (i+sites.length-1)%(sites.length);
+          window.location.replace(sites[newurl][2])
+          break;
+        }
+     }
+  }
 }
 var linksdiv = document.getElementById("links");
 linksdiv.innerHTML ="";
@@ -86,17 +84,24 @@ linksdiv.appendChild(list);
 function showcode(){
   
   var instdiv = document.getElementById("instructions");
-  instdiv.innerHTML='To be added to the Petz Community Webring:<br><ul><li>You can\'t right now!<br></li><li>Wait for your site to be added to the list above.</li><li>Copy the code next to your website link and paste it into your site\'s html wherever you want the webring widget to appear.<br>That\'s it!</li><br>'
+  instdiv.innerHTML='To be added to the Petz Community Webring:<br><ul><li>Post your website name and address on the <a href="https://discord.gg/WDCvd5F9X8">Petz Community Webring Discord</a> or start a PR on <a href="https://github.com/mnemoli/petzwebring">Github</a>.</li><li>Wait for your site to be added to the list above.</li><li>Copy one of the code blocks next to your website link (choose between static and animated banner) and paste it into your site\'s html wherever you want the webring widget to appear. (Feel free to add further styling to it as long as you keep the links and banner.)</li><li>That\'s it!</li>'
   
 for (var i=0; i<sites.length; i++){
   var lnk = document.getElementById(sites[i][1]);
   var inpbox = document.createElement("input");
+  var inpbox2 = document.createElement("input");
   inpbox.setAttribute("size","1");
   inpbox.setAttribute("type", "text");
-  inpbox.setAttribute("value", '<table style="text-align:center; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="https://mnemoli.github.io/petzwebring/#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="https://mnemoli.github.io/petzwebring"><img src="./banner.png"></a></td><td><a href="https://mnemoli.github.io/petzwebring/#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+  inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="./banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
   inpbox.setAttribute("onclick", 'this.select();');
   inpbox.style.marginLeft = "10px";
   lnk.appendChild(inpbox);
+  inpbox2.setAttribute("size","1");
+  inpbox2.setAttribute("type", "text");
+  inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="./banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+  inpbox2.setAttribute("onclick", 'this.select();');
+  inpbox2.style.marginLeft = "10px";
+  lnk.appendChild(inpbox2);
 }
   var inputs = document.getElementsByTagName('input');
   for (var i=0; i<inputs.length; i++){
