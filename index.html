@@ -13,29 +13,6 @@
     border-bottom:  0px;
   }
 </style>
-</head>
-  <body>
-<main class="container">
-  <div id="body">
-      <h1>Petz Community Webring</h1>
-      <section>
-        <h3>What is this?</h3>
-        <p>The Petz Community Webring links together a group of sites for the P.F. Magic Petz games.</p>
-        <p>These can be crew sites, hex archives, modding sites or more as long as they have Petz-related content! You can apply to join the webring below.</p>
-      </section>
-      <section>
-        <h3>Webring sites</h3>
-      <div id="links"><p>Javascript must be enabled!</p>
-      </div>
-      <br/>
-      <div id="instructions"><button onclick="showcode()">Add your site</button></div>
-      <table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="#ratshack|prev" onclick="location.hash = 'ratshack|prev'; location.reload()">Prev<br>&lt;&lt;</a></td><td><a href="#"><img src="./banner.gif"></a></td><td><a href="#ratshack|next" onclick="location.hash = 'ratshack|next'; location.reload()">Next<br>&gt;&gt;</a></td></tr></table>
-    </section>
-    <section>
-      <small>Banners by <a href="https://crushing.neocities.org/petz/index.html">CRUSH</a></small>
-    </section>
-</div>
-</main>
 <script language = "javascript"> 
   var sites = [
   ["The Rat Shack","ratshack","https://ratshack.neocities.org"]
@@ -62,6 +39,31 @@ if (direction == "next" || direction == "prev"){
      }
   }
 }
+  </script>
+</head>
+  <body>
+<main class="container">
+  <div id="body">
+      <h1>Petz Community Webring</h1>
+      <section>
+        <h3>What is this?</h3>
+        <p>The Petz Community Webring links together a group of sites for the P.F. Magic Petz games.</p>
+        <p>These can be crew sites, hex archives, modding sites or more as long as they have Petz-related content! You can apply to join the webring below.</p>
+      </section>
+      <section>
+        <h3>Webring sites</h3>
+      <div id="links"><p>Javascript must be enabled!</p>
+      </div>
+      <br/>
+      <div id="instructions"><button onclick="showcode()">Add your site</button></div>
+      <table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="#ratshack|prev" onclick="location.hash = 'ratshack|prev'; location.reload()">Prev<br>&lt;&lt;</a></td><td><a href="#"><img src="./banner.gif"></a></td><td><a href="#ratshack|next" onclick="location.hash = 'ratshack|next'; location.reload()">Next<br>&gt;&gt;</a></td></tr></table>
+    </section>
+    <section>
+      <small>Banners by <a href="https://crushing.neocities.org/petz/index.html">CRUSH</a></small>
+    </section>
+</div>
+</main>
+<script>
 var linksdiv = document.getElementById("links");
 linksdiv.innerHTML ="";
 var list = document.createElement('div');
@@ -82,34 +84,34 @@ for (var i=0; i<sites.length; i++){
 linksdiv.appendChild(list);     
 
 function showcode(){
-  
+
   var instdiv = document.getElementById("instructions");
   instdiv.innerHTML='To be added to the Petz Community Webring:<br><ul><li>Post your website name and address on the <a href="https://discord.gg/WDCvd5F9X8">Petz Community Webring Discord</a> or start a PR on <a href="https://github.com/mnemoli/petzwebring">Github</a>.</li><li>Wait for your site to be added to the list above.</li><li>Copy one of the code blocks next to your website link (choose between static and animated banner) and paste it into your site\'s html wherever you want the webring widget to appear. (Feel free to add further styling to it as long as you keep the links and banner.)</li><li>That\'s it!</li>'
-  
-for (var i=0; i<sites.length; i++){
-  var lnk = document.getElementById(sites[i][1]);
-  var inpbox = document.createElement("input");
-  var inpbox2 = document.createElement("input");
-  inpbox.setAttribute("size","1");
-  inpbox.setAttribute("type", "text");
-  inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
-  inpbox.setAttribute("onclick", 'this.select();');
-  inpbox.style.marginLeft = "10px";
-  lnk.appendChild(inpbox);
-  inpbox2.setAttribute("size","1");
-  inpbox2.setAttribute("type", "text");
-  inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
-  inpbox2.setAttribute("onclick", 'this.select();');
-  inpbox2.style.marginLeft = "10px";
-  lnk.appendChild(inpbox2);
-}
+    
+  for (var i=0; i<sites.length; i++){
+    var lnk = document.getElementById(sites[i][1]);
+    var inpbox = document.createElement("input");
+    var inpbox2 = document.createElement("input");
+    inpbox.setAttribute("size","1");
+    inpbox.setAttribute("type", "text");
+    inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+    inpbox.setAttribute("onclick", 'this.select();');
+    inpbox.style.marginLeft = "10px";
+    lnk.appendChild(inpbox);
+    inpbox2.setAttribute("size","1");
+    inpbox2.setAttribute("type", "text");
+    inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+    inpbox2.setAttribute("onclick", 'this.select();');
+    inpbox2.style.marginLeft = "10px";
+    lnk.appendChild(inpbox2);
+  }
   var inputs = document.getElementsByTagName('input');
   for (var i=0; i<inputs.length; i++){
     inputs[i].style.visibility = "visible";
     inputs[i].size = 20;
     inputs[i].style = 'width:auto';
-  }
-}     
-  </script>
+  }  
+}
+</script>
   </body>
 </html>
