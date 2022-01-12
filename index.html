@@ -92,13 +92,13 @@ for (var i=0; i<sites.length; i++){
   var inpbox2 = document.createElement("input");
   inpbox.setAttribute("size","1");
   inpbox.setAttribute("type", "text");
-  inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="./banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+  inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
   inpbox.setAttribute("onclick", 'this.select();');
   inpbox.style.marginLeft = "10px";
   lnk.appendChild(inpbox);
   inpbox2.setAttribute("size","1");
   inpbox2.setAttribute("type", "text");
-  inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="./banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+  inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
   inpbox2.setAttribute("onclick", 'this.select();');
   inpbox2.style.marginLeft = "10px";
   lnk.appendChild(inpbox2);
