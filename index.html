@@ -6,11 +6,11 @@
   ["The Rat Shack","ratshack","https://ratshack.neocities.org"]
 ];
 
-var url = window.location.href;
-var sitecode = url.replace(/.*\#/, '');
-var direction = sitecode.replace (/.*\|/,'');
-var sitecode = sitecode.replace (/\|.*/,'');
-var newurl;
+var url = window.location.href
+var urlParams = new URLSearchParams(window.location.search)
+var sitecode = urlParams.get('site')
+var direction = urlParams.get('direction')
+var newurl
 
 if (direction == "next" || direction == "prev"){
   for (var i=0; i<sites.length; i++){
@@ -27,10 +27,15 @@ if (direction == "next" || direction == "prev"){
      }
   }
 }
+else if (direction == "random") {
+  var rand = Math.floor(Math.random() * sites.length);
+  window.location.replace(sites[rand][2])
+}
   </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petz Community Webring</title>
+}
 <link rel="icon" 
       type="image/png" 
       href="./favicon.png">
@@ -56,7 +61,7 @@ if (direction == "next" || direction == "prev"){
       </div>
       <br/>
       <div id="instructions"><button onclick="showcode()">Add your site</button></div>
-      <table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="#ratshack|prev" onclick="location.hash = 'ratshack|prev'; location.reload()">Prev<br>&lt;&lt;</a></td><td><a href="#"><img src="./banner.gif"></a></td><td><a href="#ratshack|next" onclick="location.hash = 'ratshack|next'; location.reload()">Next<br>&gt;&gt;</a></td></tr></table>
+      <table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0"><tr><td style="text-align:center;"><a href="?site=ratshack&direction=prev">Prev<br>&lt;&lt;</a></td><td style="text-align:center;"><a href="http://192.168.0.15:8080/"><img style="align-self: center;" src="./banner.gif"></a><br/></td><td style="text-align:center;"><a href="?site=ratshack&direction=next">Next<br>&gt;&gt;</a></td></tr><tr><td style="padding-top: 0px; text-align:center;"/><td style="padding-top: 0px; text-align:center;"><a href="?direction=random">&lt;&lt; Random &gt;&gt;</a></td><td style="padding-top: 0px; text-align:center;"/></tr></table>
     </section>
     <section>
       <small>Banners by <a href="https://crushing.neocities.org/petz/index.html">CRUSH</a></small>
@@ -94,13 +99,13 @@ function showcode(){
     var inpbox2 = document.createElement("input");
     inpbox.setAttribute("size","1");
     inpbox.setAttribute("type", "text");
-    inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.png"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+    inpbox.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0"><tr><td style="text-align:center;"><a href="'+url+'?site='+sites[i][1]+'&direction=prev">Prev<br>&lt;&lt;</a></td><td style="text-align:center;"><a href="'+url+'"><img style="align-self: center;" src="'+url+'banner.png"></a><br/></td><td style="text-align:center;"><a href="'+url+'?site='+sites[i][1]+'&direction=next">Next<br>&gt;&gt;</a></td></tr><tr><td style="padding-top: 0px; text-align:center;"/><td style="padding-top: 0px; text-align:center;"><a href="'+url+'?direction=random">&lt;&lt; Random &gt;&gt;</a></td><td style="padding-top: 0px; text-align:center;"/></tr></table>');
     inpbox.setAttribute("onclick", 'this.select();');
     inpbox.style.marginLeft = "10px";
     lnk.appendChild(inpbox);
     inpbox2.setAttribute("size","1");
     inpbox2.setAttribute("type", "text");
-    inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0" cellpadding="1"><tr><td><a href="'+url+'#'+sites[i][1]+'|prev">Prev<br>&lt;&lt;</a></td><td><a href="'+url+'"><img src="'+url+'banner.gif"></a></td><td><a href="'+url+'#'+sites[i][1]+'|next">Next<br>&gt;&gt;</a></td></tr></table>');
+    inpbox2.setAttribute("value", '<table style="text-align:center; width: auto; font-size:12px" border="0" cellspacing="0"><tr><td style="text-align:center;"><a href="'+url+'?site='+sites[i][1]+'&direction=prev">Prev<br>&lt;&lt;</a></td><td style="text-align:center;"><a href="'+url+'"><img style="align-self: center;" src="'+url+'banner.gif"></a><br/></td><td style="text-align:center;"><a href="'+url+'?site='+sites[i][1]+'&direction=next">Next<br>&gt;&gt;</a></td></tr><tr><td style="padding-top: 0px; text-align:center;"/><td style="padding-top: 0px; text-align:center;"><a href="'+url+'?direction=random">&lt;&lt; Random &gt;&gt;</a></td><td style="padding-top: 0px; text-align:center;"/></tr></table>');
     inpbox2.setAttribute("onclick", 'this.select();');
     inpbox2.style.marginLeft = "10px";
     lnk.appendChild(inpbox2);
